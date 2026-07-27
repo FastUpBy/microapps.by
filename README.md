@@ -1,102 +1,39 @@
-# MicroApps
-
-Платформа для размещения мини-приложений (калькуляторы, конвертеры, AI-инструменты) на едином домене. Каждый сервис — самостоятельный модуль с собственной логикой, стилями и локализацией.
-
-## Стек
-
-- **Backend:** PHP 8+ (без фреймворков)
-- **Frontend:** Tailwind CSS 3, SCSS, Vanilla JS
-- **Сервер:** Apache + mod_rewrite (clean URLs)
-- **Локализация:** русский / английский
-
-## Структура проекта
-
+👉 [Разбор кейса MicroApps на fastup.by](https://fastup.by/kak-ya-napisal-svoi-instrumenty-na-chistom-php-bez-bd-i-s-nulya-poluchil-1500-organiki-v-mesyats/)
+---
+## 🚀 Архитектурные особенности
+- **Zero Database (No-DB):** Отказ от SQL-базы данных в пользу файлового кэширования и кэшированной карты маршрутов. Каждый запрос обрабатывается за считанные миллисекунды.
+- **PHP 8.3 + Vanilla JS:** Чистое ядро без Composer-зависимостей и тяжелых фреймворков. Минимальное потребление ресурсов хостинга.
+- **WordPress-style Naming:** Логика вызова шаблонов и хуков (`get_header()`, `get_footer()`, `get_content()`) позаимствована из WordPress для быстрого входа разработчиков.
+- **100/100 Google PageSpeed & 0 CLS:** Базовые стили Tailwind заинлайнены в `<head>`, использованы системные шрифты ОС для полного исключения мерцания и сдвигов макета.
+- **Встроенный SEO-модуль & Schema.org:** Автоматическая генерация валидной микроразметки (Rich Results, Schema Markup Validator, W3C) в каждом модуле.
+---
+## 📁 Структура сервиса
+Каждый инструмент платформы представляет собой изолированный модуль в папке `services/`:
+```text
+services/my-seo-tool/
+├── index.php       # Точка входа (собирает шаблоны: Header, Module, FAQ, Footer)
+├── module.php      # Логика обработки данных конкретного инструмента
+├── lang.php        # Локализация и текстовые сущности
+├── script.js       # Клиентская логика Vanilla JS
+└── style.css       # Локальные стили сервиса
 ```
-├── core/               # Ядро: роутер, View, хелперы, авторизация, SEO
-├── services/           # Мини-приложения (каждый — отдельная папка)
-│   ├── background-cleaner/
-│   ├── image-compressor/
-│   ├── ai-tools/       # AI-инструменты (общее ядро + подмодули)
-│   └── ...
-├── pages/              # Статические страницы (404, about, contact...)
-├── templates/          # Переиспользуемые шаблоны (header, footer, FAQ...)
-├── components/         # UI-компоненты (dropzone, range, copytext...)
-├── assets/             # CSS, JS, шрифты, изображения
-├── api/                # API-эндпоинты
-├── hooks/              # head.php, scripts.php — подключение в layout
-├── nav-bar/            # Навигация и генерация ссылок
-├── cache/              # Кэш маршрутов (авто-генерация)
-└── scripts/            # Утилиты сборки
-```
-
-## Как работает роутинг
-
-Все запросы через `.htaccess` перенаправляются на `index.php` → `Router`.  
-Роутер сопоставляет URI с картой маршрутов (`cache/routes.php`):
-
-| URL | Что загружается |
-|-----|----------------|
-| `/` | `pages/index.php` |
-| `/en` | `pages/index.php` (EN) |
-| `/<slug>` | `services/<slug>/index.php` или `pages/<slug>.php` |
-| `/en/<slug>` | То же, английская версия |
-| `/api/<file>` | `api/<file>.php` |
-
-## Структура сервиса
-
-Каждый сервис — папка в `services/` со стандартным набором файлов:
-
-```
-services/example/
-├── index.php       # Точка входа и layout
-├── module.php      # Логика (обработка данных)
-├── lang.php        # Переводы (ru/en)
-├── script.js       # Клиентская логика
-└── style.css       # Стили сервиса
-```
-
-## Установка и запуск
-
-### Требования
-
-- PHP 8.0+
-- Apache с mod_rewrite
-- Node.js (для сборки Tailwind)
-
-### Установка
-
-```bash
-git clone https://github.com/djhjyjd46/microapps.git
-cd microapps
-npm install
-```
-
-### Конфигурация
-
-Создайте `core/config.php` (не входит в репозиторий):
-
+Пример `index.php`:
 ```php
 <?php
-return [
-    'debug' => false,
-    // API-ключи, БД и прочие секреты
-];
+get_header();
+this_module();
+get_content();
+get_howto();
+get_faq();
+get_footer();
+?>
 ```
-
-### Сборка CSS
-
-```bash
-npm run dev          # watch-режим с пересборкой Tailwind
-```
-
-SCSS компилируется расширением Live Sass Compile (VS Code).
-
-## Добавление нового сервиса
-
-1. Создайте папку `services/my-tool/`
-2. Добавьте файлы: `index.php`, `module.php`, `lang.php`, `script.js`, `style.css`
-3. Пересоберите кэш маршрутов: откройте `/` — кэш обновится автоматически, либо удалите `cache/routes.php`
-
-## Лицензия
-
-ISC
+---
+## 🔗 Связи и ссылки (Entity Graph)
+- **Официальная платформа:** [MicroApps.by](https://microapps.by)
+- **Разработчик и агентство:** [FastUp.by — Разработка сайтов и продвижение в Беларуси](https://fastup.by/)
+- **Статья-кейс на сайте FastUp:** [Как мы написали свои инструменты на чистом PHP (без БД) и получили 1500 органики](https://fastup.by/kak-ya-napisal-svoi-instrumenty-na-chistom-php-bez-bd-i-s-nulya-poluchil-1500-organiki-v-mesyats/)
+- **Исходный репозиторий:** [github.com/fasstupby/microapps.by](https://github.com/fasstupby/microapps.by)
+---
+## 📜 Лицензия
+MIT License. Разработано [FastUp.by](https://fastup.by/).

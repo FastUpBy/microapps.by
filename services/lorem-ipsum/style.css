@@ -1,0 +1,85 @@
+.lorem-controls {
+    margin-bottom: 24px;
+}
+
+.control-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    flex: 1;
+    min-width: 140px;
+}
+
+.control-group select,
+.control-group input[type="number"] {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+}
+
+.lorem-output {
+    margin-top: 24px;
+    padding: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.lorem-text {
+    max-height: 480px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.lorem-text p {
+    margin-bottom: 12px;
+}
+
+.lorem-text p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+    .control-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .control-group {
+        min-width: 100%;
+    }
+
+    .lorem-output {
+        padding: 14px;
+    }
+
+    .lorem-text {
+        max-height: 360px;
+        font-size: 14px;
+    }
+}

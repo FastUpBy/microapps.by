@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Массовая генерация SEO-статей</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 560px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.35rem; margin-bottom: 1rem; }
+    .progress-wrap { margin: 1.5rem 0; }
+    .progress-bar { height: 24px; background: #e5e7eb; border-radius: 8px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #2563eb; border-radius: 8px; transition: width 0.3s; width: 0%; }
+    .progress-text { margin-top: 0.5rem; color: #374151; }
+    button { padding: 0.6rem 1.2rem; background: #2563eb; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #1d4ed8; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .error { color: #b91c1c; margin-top: 0.5rem; }
+    .done { color: #15803d; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Массовая генерация SEO-статей</h1>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <p class="progress-text" id="progress-text">Сгенерировано 0 из 0</p>
+  </div>
+  <button id="btn-start">Запустить генерацию</button>
+  <p class="error" id="error" style="display:none;"></p>
+  <p class="done" id="done" style="display:none;"></p>
+
+  <script>
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    const btnStart = document.getElementById('btn-start');
+    const errorEl = document.getElementById('error');
+    const doneEl = document.getElementById('done');
+
+    function hideMessages() {
+      errorEl.style.display = 'none';
+      doneEl.style.display = 'none';
+    }
+
+    function updateProgress(data) {
+      const total = data.total || 0;
+      const current = data.current || 0;
+      const pct = total ? Math.round((current / total) * 100) : 0;
+      progressFill.style.width = pct + '%';
+      progressText.textContent = 'Сгенерировано ' + current + ' из ' + total;
+      if (data.error) {
+        errorEl.textContent = data.error;
+        errorEl.style.display = 'block';
+      }
+      if (data.done && data.outputPath) {
+        doneEl.textContent = 'Готово. Файл: ' + data.outputPath;
+        doneEl.style.display = 'block';
+      }
+      btnStart.disabled = data.running;
+    }
+
+    let pollTimer = null;
+    function poll() {
+      fetch('/api/status')
+        .then(r => r.json())
+        .then(data => {
+          updateProgress(data);
+          if (data.running) pollTimer = setTimeout(poll, 1500);
+        })
+        .catch(() => { if (pollTimer) pollTimer = setTimeout(poll, 1500); });
+    }
+
+    btnStart.addEventListener('click', () => {
+      hideMessages();
+      fetch('/api/start', { method: 'POST' })
+        .then(() => { poll(); updateProgress({ running: true, total: 0, current: 0 }); })
+        .catch(e => { errorEl.textContent = e.message; errorEl.style.display = 'block'; });
+    });
+
+    poll();
+  </script>
+</body>
+</html>

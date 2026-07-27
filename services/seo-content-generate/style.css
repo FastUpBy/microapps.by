@@ -1,0 +1,150 @@
+/* AI генератор SEO-контента — SCSS-подобные вложенные стили */
+
+/* Анимации для уведомлений */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-in { animation: slide-in 0.3s ease-out; }
+.animate-slide-out { animation: slide-out 0.3s ease-in; }
+
+.notification-toast {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover { transform: scale(1.02); }
+}
+
+/* Индикатор загрузки */
+.loading-indicator {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--accent);
+  border-top: 4px solid var(--muted);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Контейнер результата */
+.result-container { animation: fadeInUp 0.5s ease-out; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Стили для контента статьи (вложенные правила) */
+.article-content {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  color: var(--text);
+  max-width: none;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  ul, ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+
+  li {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+  }
+
+  .image-placeholder {
+    background: var(--bg);
+    border: 2px dashed var(--muted);
+    padding: 1.25rem;
+    margin: 1rem 0;
+    text-align: center;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+
+    &:hover { border-color: var(--muted); }
+
+    p {
+      color: var(--text);
+      font-style: italic;
+    }
+
+    strong { color: var(--text); font-weight: 600; }
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .article-content {
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.125rem; }
+  }
+
+  .result-container {
+    .flex { flex-direction: column; }
+    button { width: 100%; }
+  }
+}
+#article-title,
+#article-meta,
+#article-keywords {
+  color: var(--text);
+  background: var(--muted);
+      padding: 1.5rem;
+    border-radius: 0.5rem;
+}

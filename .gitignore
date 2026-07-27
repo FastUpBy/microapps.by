@@ -1,0 +1,45 @@
+# ==========================
+# Secrets & credentials
+# ==========================
+.env
+.env.*
+core/config.php
+services/seo-content-generate/config.php
+**/config.php
+client_secret_*.json
+.vscode/sftp.json
+
+# ==========================
+# IDE / OS
+# ==========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================
+# Dependencies
+# ==========================
+node_modules/
+
+# ==========================
+# Build artifacts
+# ==========================
+dist/
+assets/css/tailwind.build.css
+assets/css/main.css
+assets/css/main.css.map
+
+# ==========================
+# Cache & logs
+# ==========================
+cache/
+logs/
+error_log
+
+# ==========================
+# Archives & temp files
+# ==========================
+*.zip
+textru.txt

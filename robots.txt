@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /en/admin
+Disallow: /admin/
+Disallow: /en/admin/
+Disallow: /admin.php
+Disallow: /google-login
+Disallow: /google-callback
+Disallow: /en/google-login
+Disallow: /en/google-callback
+
+Disallow: /*?_s=*
+Disallow: /*&_s=*
+Disallow: /*?utm_*
+Disallow: /*&utm_*
+Disallow: /*?yclid=*
+Disallow: /*&yclid=*
+Disallow: /*?gclid=*
+Disallow: /*&gclid=*
+Disallow: /*?fbclid=*
+
+
+
+Sitemap: https://microapps.by/sitemap.xml
+
+
+
+

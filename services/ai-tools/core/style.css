@@ -1,0 +1,25 @@
+.copytip-inline{
+  position: absolute;
+  top: -30px;
+ right: 5px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 9999;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  transform-origin: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  will-change: opacity, transform, top, left;
+  display: inline-block;
+}
+.copytip-visible{
+    opacity: 1;
+    transform: scale(1); 
+}

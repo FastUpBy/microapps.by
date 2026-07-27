@@ -1,0 +1,44 @@
+.tm-dropzone{
+    border: 2px dashed var(--muted);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.tm-dropzone.dragover{ background: rgba(0,0,0,0.03); }
+.tm-drop-hint{ color: var(--muted); }
+.tm-preview{ margin-top:12px; white-space:pre-wrap; max-height:220px; overflow:auto; background:var(--card); padding:10px; border-radius:8px; }
+
+.file-table { width: 100%; margin-top:12px; border: 1px solid var(--border); border-radius:8px; background: var(--card); }
+.file-table table{ width:100%; border-collapse:collapse; }
+.file-table .empty-row{ padding:18px; color:var(--text); }
+.file-table button{ background:transparent; border:none; cursor:pointer; padding:6px; margin-right:6px; color:var(--muted); font-size:16px; }
+.file-table button:hover{ color:var(--accent); }
+.file-table button[data-action="delete"]{ color:var(--text); font-size:18px; }
+.file-table button[data-action="delete"]:hover{ background: transparent; }
+.file-table-wrapper{overflow: hidden;}
+
+/* Табличные стили, заменяющие устаревшие атрибуты cellspacing/cellpadding/border */
+.file-table thead th, .el-table__header th { text-align:left; padding:10px; font-weight:600; border-bottom:1px solid var(--border); }
+.file-table tbody td, .el-table__body td { padding:10px; border-bottom:1px solid var(--border); vertical-align:middle; }
+.el-table__header, .el-table__body { border-collapse: collapse; width: 100%; }
+.el-table__body-wrapper { height: 220px; overflow: auto; }
+/* Скрытая строка для валидации структуры колонок */
+.sizer-row { display: none; }
+
+/* Ширины колонок через CSS вместо colgroup */
+.file-table thead th, .el-table__header th:nth-child(1), .el-table__body td:nth-child(1),
+.el-table__header th:nth-child(2), .el-table__body td:nth-child(2) { width: 60px; max-width: unset;}
+.file-table thead th, .el-table__header th:nth-child(2), .el-table__body td:nth-child(2),
+.el-table__header th:nth-child(2), .el-table__body td:nth-child(2) { width: 433px;  max-width: unset;}
+.file-table thead th, .el-table__header th:nth-child(3), .el-table__body td:nth-child(3),
+.el-table__header th:nth-child(3), .el-table__body td:nth-child(3) { width: 120px;  max-width: unset;}
+.file-table thead th, .el-table__header th:nth-child(4), .el-table__body td:nth-child(4),
+.el-table__header th:nth-child(4), .el-table__body td:nth-child(4) { width: 180px;  max-width: unset;}
+.file-table thead th, .el-table__header th:nth-child(5), .el-table__body td:nth-child(5),
+.el-table__header th:nth-child(5), .el-table__body td:nth-child(5) { width: 80px;  max-width: unset;}
+
+
+

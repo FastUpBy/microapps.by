@@ -1,0 +1,113 @@
+@use 'variables' as *;
+
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: var(--radius);
+}
+
+select,
+input,
+.field {
+  width: 100%;
+  background: var(--dark);
+  color: var(--text);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+  font-size: 16px;
+  height: 35px;
+  padding-inline: 8px;
+  border: solid 1px var(--border);
+  display: flex;
+  align-items: center;
+
+  &::placeholder {
+    color: var(--text);
+    opacity: 0.6;
+  }
+
+  &:hover {
+    border-color: var(--muted);
+  }
+
+  &[type="range"] {
+    height: auto;
+    padding: 0;
+  }
+
+  &[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    padding: 0;
+    margin: 0 6px 0 0;
+    cursor: pointer;
+    flex: none;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: 4px;
+    position: relative;
+    appearance: none;
+    transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+
+    &:hover {
+      border-color: var(--accent);
+    }
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($accent, 0.35);
+      border-color: var(--accent);
+    }
+    &:active {
+      background: var(--dark);
+    }
+    &:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+      &::after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 1px;
+        width: 6px;
+        height: 10px;
+        border: 2px solid var(--bg);
+        border-top: 0;
+        border-left: 0;
+        transform: rotate(45deg);
+      }
+    }
+    &:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+  }
+
+  &:focus {
+    border: dashed 1px var(--accent);
+    box-shadow: 0 0 0 3px rgba($accent, 0.2);
+    outline: none;
+  }
+}
+
+/* Скрыть спиннеры (стрелки) у input[type=number] в разных браузерах */
+/* Применяется глобально ко всем числовым полям; если нужно локально — используйте класс `.no-spinner` */
+input[type="number"],
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Для Firefox */
+input[type="number"] {
+  appearance: none;
+}

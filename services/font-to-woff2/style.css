@@ -1,0 +1,176 @@
+/* Dropzone styles */
+.dropzone-component {
+    margin-bottom: 1rem;
+}
+
+#fontInputDropZone {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#fontInputDropZone:hover {
+    border-color: var(--accent) !important;
+    background: var(--muted) !important;
+}
+
+#fontInputDropZone.drag-over {
+    border-color: var(--accent) !important;
+    background: var(--muted) !important;
+    transform: scale(1.02);
+}
+
+/* Список файлов */
+.file-list-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.file-name {
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+    word-break: break-word;
+}
+
+.file-size {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-left: 1rem;
+}
+
+/* Результаты конвертации */
+#result-area {
+    margin-top: 2rem;
+}
+
+.result-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.result-filename {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+    word-break: break-word;
+}
+
+.conversion-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-converting {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Статистика конвертации */
+.conversion-stats {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--muted);
+    border-radius: 6px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item:last-child {
+    margin-bottom: 0;
+}
+
+.stat-label {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.stat-value {
+    color: var(--text);
+}
+
+.stat-saved {
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+}
+
+.stat-saved .stat-value {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Кнопки */
+.btn-download-single {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#download-all-container {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border);
+}
+
+.text-error {
+    color: #991b1b;
+    font-size: 0.875rem;
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .file-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .file-size {
+        margin-left: 0;
+    }
+}

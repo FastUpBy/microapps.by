@@ -1,0 +1,3 @@
+/* KLinks local styles: small helpers only */
+#klinks_count { min-width: 120px }
+.btn-ghost { background: transparent; color: var(--muted); padding: 0.45rem 0.8rem; border-radius: 8px }

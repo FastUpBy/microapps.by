@@ -1,0 +1,118 @@
+/* Локальные стили для old-calculator — только уникальные правки */
+
+.tablo {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border: 2px solid #1A5F8C;
+    background-color: #F2F9FF;
+    color: #000000;
+    padding: 10px;
+}
+
+.tablo h2 {
+    font-size: 22px;
+    color: #1A5F8C;
+    font-weight: 700;
+}
+
+.tablo table {
+    background: #F2F9FF;
+    border: none;
+}
+
+.tablo thead {
+    font-size: 22px;
+    color: #1A5F8C;
+    font-weight: 700;
+}
+
+.tablo td {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    max-width: 100%;
+    border: none;
+}
+
+.tablo tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tablo td input {
+	width: auto;
+    margin-bottom: 0;
+    max-width: 150px;
+    background: var(--bg);
+}
+
+.tablo input[type="button"] {
+    cursor: pointer;
+}
+
+.tablo td.osn_16_b {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tablo input.osn_18_b_ram_vir_pr {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tablo table.osn_star {
+    font-size: 14px;
+}
+
+.service-card { padding: 12px; border-radius: var(--radius); background: var(--card); color: var(--text); }
+.service-card .osn_star { margin-bottom: 6px; }
+.service-card input.osn_18_b_ram_vir_pr { padding: 6px 8px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.08); }
+.service-card input.osn_16_b { cursor: pointer; }
+.service-card .osn_22_sin_b { font-weight: 700; }
+
+.copy-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 8px;
+	padding: 4px 6px;
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background var(--transition, 0.2s) ease, transform 0.12s ease;
+}
+.copy-btn:hover { background: transparent }
+.copy-btn.copied { transform: translateY(-1px); }
+
+/* Локальное переопределение переменных для светлой темы (использует !important чтобы переопределить глобальные значения) */
+[data-theme="light"] .service-card {
+	--bg: #f7f7f7 !important;
+	--card: #ffffff !important;
+	--text: #1a1a1a !important;
+	--muted: #707070 !important;
+	--accent: #007bff !important;
+	--hover-bg: rgba(0, 123, 255, 0.08) !important;
+	--border: #e6e6e6 !important;
+	--radius: 8px !important;
+	--transition: 0.3s ease !important;
+	--font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif !important;
+	--muted-hover: rgba(112,112,112,0.85) !important;
+	--nav-bg: #f1f1f1 !important;
+	--mobile: 768px !important;
+}
+
+/* Accessibility helper: visually hidden but readable by screen readers */
+.visually-hidden {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+

@@ -1,0 +1,56 @@
+.png-svg-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+    .png-svg-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.png-svg-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.svg-preview {
+    min-height: 240px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 1rem;
+    overflow: auto;
+}
+
+.svg-preview svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#pngInputDropZone.drag-over {
+    border-color: var(--accent);
+    background: var(--hover-bg);
+}
+
+#svgOutput {
+    min-height: 200px;
+    resize: vertical;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 1rem;
+    font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+    font-size: 0.9rem;
+}
+
+#pngSvgRoot .btn[disabled] {
+    cursor: not-allowed;
+}
+
+#pngSvgRoot .has-file {
+    color: var(--text);
+}

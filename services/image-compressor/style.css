@@ -1,0 +1,18 @@
+/* Image Compressor Styles */
+.image-compressor-module .compare-wrapper {
+    --thumb-size: 6px;
+}
+
+.image-compressor-module .compare-base {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.image-compressor-module #divider {
+    touch-action: none;
+}
+
+.image-compressor-module #divider:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}

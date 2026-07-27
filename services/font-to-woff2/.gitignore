@@ -1,0 +1,15 @@
+# Примеры файлов
+example-usage.php
+
+# Временные файлы
+*.tmp
+*.temp
+
+# Тестовые шрифты
+test-fonts/
+fonts/
+
+# Логи
+*.log
+error.log
+debug.log

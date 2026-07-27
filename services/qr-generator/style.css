@@ -1,0 +1,5 @@
+/* Стили для QR-генератора уже определены в base.css (.hero-service) */
+
+.input-error {
+    border: 2px solid #ff4d4f !important;
+}

@@ -1,0 +1,60 @@
+@use 'variables' as *;
+
+button,
+.btn {
+
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: 0.2s ease;
+  user-select: none;
+  outline: none;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 15px;
+  background: var(--button-bg);
+  color: var(--text);
+  &--transparent{
+    background: transparent !important;
+    border: none !important;  
+    box-shadow: none !important;
+    padding: 0;
+    &:hover {
+      background: none !important;
+    }
+    &:active {
+      transform: translate(-2px, 2px);
+    }
+  }
+
+  &--accent {
+    background: var(--accent)!important;
+    color: #fff!important;
+  }
+
+  &:hover {
+    background: var(--button-hover);
+  }
+
+  &:active {
+    background-color: rgba($bg, 0.2);
+    transform: scale(0.98);
+  }
+
+  .wrapper & {
+    background: var(--button-bg);
+    color: var(--text);
+
+    &:hover {
+      background: var(--button-hover);
+    }
+
+    &:active {
+      background: var(--card, 0.8);
+    }
+  }
+
+}

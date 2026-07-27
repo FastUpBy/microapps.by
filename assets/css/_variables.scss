@@ -1,0 +1,64 @@
+// Основные цвета
+$card: #2A292E; // основной фон страницы
+$bg: #202023; // фон карточек/секции
+$text: #FDFDFD; // основной текст
+$muted: #1C1C20; // второстепенный текст
+$nav-bg: #2A292E; // фон навигации
+$muted-hover: #303034d9; // второстепенный текст
+$dark: #444444b4; // цвет акцентов (ссылки, hover)
+$accent: #137ce6; // цвет акцентов (ссылки, hover)
+$hover-bg: #137ce61a; // hover для кнопок/ссылок
+$border: #ffffff30; // границы
+$radius: 8px; // скругления
+$mobile: 768px; // точка перелома для мобильных устройств
+$button-bg: #ffffff33;
+$button-hover: #ffffff59;
+$transition: 0.3s ease; // плавность анимаций
+$sidebar-width-collapsed: 60px; // ширина свернутой боковой панели
+$shadow: rgba(255, 255, 255, 0.623); // тень для hover
+// Шрифты
+$font-stack: 'Jost', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+:root {
+  --radius: #{$radius};
+  --bg: #{$bg};
+  --card: #{$card};
+  --text: #{$text};
+  --muted: #{$muted};
+  --accent: #{$accent};
+  --hover-bg: #{$hover-bg};
+  --border: #{$border};
+  --transition: #{$transition};
+  --font-stack: #{$font-stack};
+  --muted-hover: #{$muted-hover};
+  --nav-bg: #{$nav-bg};
+  --mobile: #{$mobile};
+  --dark: #{$dark};
+  --button-bg:#{$button-bg};
+  --button-hover:#{$button-hover};
+  --scroll-color: hsla(0, 0%, 100%, .2) rgba(0, 0, 0, 0);
+  --shadow: #{$shadow};
+}
+
+@media (max-width: $mobile) {
+  :root {
+    --nav-width: 100%;
+  }
+}
+
+// Лёгкая тема (по желанию)
+[data-theme="light"] {
+  --bg: #e1e1e1;
+  --card: #e9e6e6;
+  --text: #1a1a1a;
+  --muted: #cacaca;
+  --accent: #007bff;
+  --hover-bg: #6d6d6dd9;
+  --border: #ccc;
+  --nav-bg: #d0d0d0;
+  --button-bg: #00000033;
+  --shadow: #{rgba(0, 0, 0, 0.603)};
+  --button-hover: #00000059;
+  --darl: #4444442b;
+  --scroll-color: hsla(0, 0%, 0%, .2) rgba(255, 255, 255, 0);
+}

@@ -1,0 +1,397 @@
+[
+    {
+        "slug": "seo-tag-generator",
+        "title": {
+            "ru": "Генератор SEO-тегов",
+            "en": "SEO Tag Generator"
+        },
+        "category": [
+            "development",
+            "ai",
+            "seo"
+        ]
+    },
+    {
+        "slug": "seo-content-generate",
+        "title": {
+            "ru": "Генератор SEO-контента",
+            "en": "SEO Content Generator"
+        },
+        "category": [
+            "development",
+            "ai",
+            "seo"
+        ]
+    },
+    {
+        "slug": "excel-formula-generator",
+        "title": {
+            "ru": "Генератор формул Excel",
+            "en": "Excel Formula Generator"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "json-to-sql",
+        "title": {
+            "ru": "JSON в SQL",
+            "en": "JSON to SQL"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "sql-to-json",
+        "title": {
+            "ru": "SQL в JSON",
+            "en": "SQL to JSON"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "excel-to-sql",
+        "title": {
+            "ru": "Excel в SQL",
+            "en": "Excel to SQL"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "robots-generator",
+        "title": {
+            "ru": "Генератор robots.txt",
+            "en": "Robots.txt Generator"
+        },
+        "category": [
+            "development",
+            "ai",
+            "seo"
+        ]
+    },
+    {
+        "slug": "sitemap-generator",
+        "title": {
+            "ru": "Генератор sitemap.xml",
+            "en": "Sitemap Generator"
+        },
+        "category": [
+            "development",
+            "ai",
+            "seo"
+        ]
+    },
+    {
+        "slug": "ai-text-summarizer",
+        "title": {
+            "ru": "Резюмирование текста",
+            "en": "AI Text Summarizer"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "ai-product-name",
+        "title": {
+            "ru": "Генератор названий продуктов",
+            "en": "AI Product Name Generator"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "ai-email-subject",
+        "title": {
+            "ru": "Генератор тем письма",
+            "en": "AI Email Subject Line"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "ai-regex-explain",
+        "title": {
+            "ru": "Объяснение регулярных выражений",
+            "en": "AI Regex Explanation"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "ai-404-text",
+        "title": {
+            "ru": "Генератор текста для 404",
+            "en": "AI 404 Page Text"
+        },
+        "category": [
+            "ai"
+        ]
+    },
+    {
+        "slug": "webp-converter",
+        "title": {
+            "ru": "Конвертер в WebP",
+            "en": "WebP Converter"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "image-compressor",
+        "title": {
+            "ru": "Сжатие изображений",
+            "en": "Image Compressor"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "png-svg",
+        "title": {
+            "ru": "PNG в SVG",
+            "en": "PNG to SVG"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "background-cleaner",
+        "title": {
+            "ru": "Удаление фона",
+            "en": "Background Remover"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "liquid-glass",
+        "title": {
+            "ru": "Жидкое стекло CSS",
+            "en": "Liquid Glass CSS"
+        },
+        "category": [
+            "graphics",
+            "development"
+        ]
+    },
+    {
+        "slug": "image-cropper",
+        "title": {
+            "ru": "Обрезка изображений",
+            "en": "Crop Image"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "favicon-generator",
+        "title": {
+            "ru": "Генератор фавикона",
+            "en": "Favicon Generator"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "font-to-woff2",
+        "title": {
+            "ru": "Конвертер шрифтов в WOFF2",
+            "en": "Font to WOFF2 Converter"
+        },
+        "category": [
+            "graphics",
+            "development"
+        ]
+    },
+    {
+        "slug": "images-to-pdf",
+        "title": {
+            "ru": "Изображения в PDF",
+            "en": "Images to PDF"
+        },
+        "category": [
+            "graphics"
+        ]
+    },
+    {
+        "slug": "utm-generator",
+        "title": {
+            "ru": "Генератор UTM-меток",
+            "en": "UTM Generator"
+        },
+        "category": [
+            "development"
+        ]
+    },
+    {
+        "slug": "sql-query-builder",
+        "title": {
+            "ru": "Конструктор SQL-запросов",
+            "en": "SQL Query Builder"
+        },
+        "category": [
+            "development",
+            "ai"
+        ]
+    },
+    {
+        "slug": "regex-generator",
+        "title": {
+            "ru": "Генератор регулярных выражений",
+            "en": "Regex Generator"
+        },
+        "category": [
+            "development",
+            "ai"
+        ]
+    },
+    {
+        "slug": "htaccess-rewrite",
+        "title": {
+            "ru": "Генератор .htaccess",
+            "en": "HTACCESS Rewrite"
+        },
+        "category": [
+            "development",
+            "ai"
+        ]
+    },
+    {
+        "slug": "css-to-tailwind",
+        "title": {
+            "ru": "CSS в Tailwind",
+            "en": "CSS to Tailwind"
+        },
+        "category": [
+            "development",
+            "ai"
+        ]
+    },
+    {
+        "slug": "tailwind-to-css",
+        "title": {
+            "ru": "Tailwind в CSS",
+            "en": "Tailwind to CSS"
+        },
+        "category": [
+            "development",
+            "ai"
+        ]
+    },
+    {
+        "slug": "js-compressor",
+        "title": {
+            "ru": "Минификатор JS",
+            "en": "JS Compressor"
+        },
+        "category": [
+            "development"
+        ]
+    },
+    {
+        "slug": "css-compressor",
+        "title": {
+            "ru": "Минификатор CSS",
+            "en": "CSS Compressor"
+        },
+        "category": [
+            "development"
+        ]
+    },
+    {
+        "slug": "html-compressor",
+        "title": {
+            "ru": "Минификатор HTML",
+            "en": "HTML Compressor"
+        },
+        "category": [
+            "development"
+        ]
+    },
+    {
+        "slug": "qr-generator",
+        "title": {
+            "ru": "Генератор QR-кода",
+            "en": "QR Code Generator"
+        },
+        "category": [
+            "utilities"
+        ]
+    },
+    {
+        "slug": "perc-calculator",
+        "title": {
+            "ru": "Калькулятор процентов",
+            "en": "Percent Calculator"
+        },
+        "category": [
+            "utilities"
+        ]
+    },
+    {
+        "slug": "txt-merge",
+        "title": {
+            "ru": "Объединение TXT\/CSV",
+            "en": "TXT\/CSV Merge"
+        },
+        "category": [
+            "utilities"
+        ]
+    },
+    {
+        "slug": "old-calculator",
+        "title": {
+            "ru": "Классический калькулятор",
+            "en": "Old Calculator"
+        },
+        "category": [
+            "utilities"
+        ]
+    },
+    {
+        "slug": "klinks",
+        "title": {
+            "ru": "Открыть несколько ссылок",
+            "en": "Open Multiple Links"
+        },
+        "category": [
+            "utilities"
+        ]
+    },
+    {
+        "slug": "char-counter",
+        "title": {
+            "ru": "Счётчик символов",
+            "en": "Character Counter"
+        },
+        "category": [
+            "utilities"
+        ]
+    },
+    {
+        "slug": "lorem-ipsum",
+        "title": {
+            "ru": "Генератор Lorem Ipsum",
+            "en": "Lorem Ipsum Generator"
+        },
+        "category": [
+            "utilities"
+        ]
+    }
+]

@@ -1,0 +1,164 @@
+document.addEventListener('DOMContentLoaded', function () {
+
+    // --- Helpers & constants ---
+    const focusableSelector = 'a[href], area[href], input:not([type=hidden]), select, textarea, button, iframe, [tabindex], [contenteditable]';
+
+    function disableFocusable(root) {
+        if (!root) return;
+        const nodes = root.querySelectorAll(focusableSelector);
+        nodes.forEach(n => {
+            if (n.hasAttribute('data-old-tabindex')) return;
+            const old = n.getAttribute('tabindex');
+            if (old === null) n.setAttribute('data-old-tabindex', 'none');
+            else n.setAttribute('data-old-tabindex', old);
+            try { n.setAttribute('tabindex', '-1'); } catch (e) { }
+        });
+    }
+
+    function restoreFocusable(root) {
+        if (!root) return;
+        const nodes = root.querySelectorAll('[data-old-tabindex]');
+        nodes.forEach(n => {
+            const old = n.getAttribute('data-old-tabindex');
+            if (old === 'none') n.removeAttribute('tabindex');
+            else n.setAttribute('tabindex', old);
+            n.removeAttribute('data-old-tabindex');
+        });
+    }
+
+    // --- Theme initialization ---
+    (function initTheme() {
+        try {
+            const saved = localStorage.getItem('theme');
+            const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
+            const preferLight = mq ? mq.matches : false;
+            const theme = saved ? saved : (preferLight ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+            if (!saved && mq) {
+                const handler = e => document.documentElement.setAttribute('data-theme', e.matches ? 'light' : 'dark');
+                if (typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+                else if (typeof mq.addListener === 'function') mq.addListener(handler);
+            }
+        } catch (e) { /* ignore */ }
+        try { requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.remove('theme-preload'))); } catch (e) { }
+    })();
+
+    // --- Search (nav) ---
+    (function initSearch() {
+        const input = document.getElementById('nav_search');
+        if (!input) return;
+        let t;
+        input.addEventListener('input', function () {
+            clearTimeout(t);
+            t = setTimeout(function () {
+                const q = (input.value || '').trim().toLowerCase();
+                const items = document.querySelectorAll('#nav_left .sidebar-list li');
+                if (!q) { items.forEach(li => li.style.display = ''); return; }
+                items.forEach(li => { li.style.display = ((li.textContent || '').toLowerCase().indexOf(q) === -1) ? 'none' : ''; });
+            }, 180);
+        });
+    })();
+
+    // --- Theme switch control ---
+    (function initThemeSwitch() {
+        const themeSwitch = document.getElementById('themeSwitch');
+        if (!themeSwitch) return;
+        const saved = localStorage.getItem('theme');
+        const current = saved ? saved : (document.documentElement.getAttribute('data-theme') || 'dark');
+        themeSwitch.checked = current === 'light';
+        themeSwitch.addEventListener('change', function () {
+            const next = this.checked ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+    })();
+
+    // --- Mobile menu ---
+    const burger = document.querySelector('.burger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileHeader = document.querySelector('.mobile-header');
+    const closeBtn = document.querySelector('.menu-close');
+    const overlay = document.querySelector('#nav_overlay') || document.querySelector('.mobile-menu-overlay');
+
+    function openMenu() {
+        document.body.classList.add('menu-open');
+        if (mobileHeader) mobileHeader.classList.add('menu-open');
+        if (mobileMenu) mobileMenu.setAttribute('aria-hidden', 'false');
+        if (overlay) overlay.setAttribute('aria-hidden', 'false');
+        if (burger) burger.setAttribute('aria-expanded', 'true');
+        disableFocusable(document.querySelector('main') || document.body);
+        restoreFocusable(mobileMenu);
+    }
+
+    function closeMenu() {
+        document.body.classList.remove('menu-open');
+        if (mobileHeader) mobileHeader.classList.remove('menu-open');
+        if (mobileMenu) mobileMenu.setAttribute('aria-hidden', 'true');
+        if (overlay) overlay.setAttribute('aria-hidden', 'true');
+        if (burger) burger.setAttribute('aria-expanded', 'false');
+        restoreFocusable(document.querySelector('main') || document.body);
+        disableFocusable(mobileMenu);
+    }
+
+    if (burger && mobileMenu) { burger.setAttribute('aria-controls', 'mobileMenu'); mobileMenu.id = 'mobileMenu'; burger.addEventListener('click', openMenu); }
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (overlay) overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keyup', function (e) { if (e.key === 'Escape' && document.body.classList.contains('menu-open')) closeMenu(); });
+
+    // --- FAQ accordion ---
+    (function initFaq() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-question');
+            const panel = item.querySelector('.faq-answer');
+            if (!btn || !panel) return;
+            btn.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                faqItems.forEach(i => {
+                    if (i === item) return;
+                    i.classList.remove('open');
+                    const b = i.querySelector('.faq-question');
+                    const p = i.querySelector('.faq-answer');
+                    if (b) b.setAttribute('aria-expanded', 'false');
+                    if (p) { p.setAttribute('aria-hidden', 'true'); p.style.maxHeight = '0px'; }
+                });
+                item.classList.toggle('open', !isOpen);
+                btn.setAttribute('aria-expanded', String(!isOpen));
+                panel.setAttribute('aria-hidden', String(isOpen));
+                if (panel.getAttribute('aria-hidden') === 'true') disableFocusable(panel); else restoreFocusable(panel);
+                if (!isOpen) {
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                    const onEnd = function (e) { if (e.propertyName !== 'max-height') return; panel.removeEventListener('transitionend', onEnd); };
+                    panel.addEventListener('transitionend', onEnd);
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                    panel.offsetHeight;
+                    requestAnimationFrame(() => panel.style.maxHeight = '0px');
+                }
+            });
+        });
+    })();
+
+});
+
+// --- Sidebar controls (outside DOMContentLoaded scope) ---
+const sidebar = document.querySelector('.sidebar');
+const collapseBar = document.querySelector('.collapse-bar');
+const btnHide = document.querySelector('.sidebar-hide');
+const btnShow = document.querySelector('.sidebar-show');
+
+try {
+    const root = document.documentElement;
+    const navWidth = (getComputedStyle(root).getPropertyValue('--nav-width') || '18rem').trim() || '18rem';
+    root.style.setProperty('--sidebar-reserve', navWidth);
+    const collapsedWidth = '60px';
+    function setReserveToCollapsed() { root.style.setProperty('--sidebar-reserve', collapsedWidth); }
+    function setReserveToNav() { root.style.setProperty('--sidebar-reserve', navWidth); }
+    if (btnHide) btnHide.addEventListener('click', setReserveToCollapsed);
+    if (btnShow) btnShow.addEventListener('click', setReserveToNav);
+} catch (e) { }
+
+if (btnHide) btnHide.addEventListener('click', () => { try { document.documentElement.style.setProperty('--sidebar-reserve', '60px'); } catch (e) { } sidebar.classList.add('hide'); collapseBar.classList.add('show'); });
+if (btnShow) btnShow.addEventListener('click', () => {
+    try { document.documentElement.style.setProperty('--sidebar-reserve', getComputedStyle(document.documentElement).getPropertyValue('--nav-width') || '18rem'); } catch (e) { } sidebar.classList.remove('hide'); collapseBar.classList.remove('show');
+});

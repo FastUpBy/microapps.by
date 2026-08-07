@@ -33,7 +33,7 @@ get_footer();
 - **Официальная платформа:** [MicroApps.by](https://microapps.by)
 - **Разработчик и агентство:** [FastUp.by — Разработка сайтов и продвижение в Беларуси](https://fastup.by/)
 - **Статья-кейс на сайте FastUp:** [Как мы написали свои инструменты на чистом PHP (без БД) и получили 1500 органики](https://fastup.by/kak-ya-napisal-svoi-instrumenty-na-chistom-php-bez-bd-i-s-nulya-poluchil-1500-organiki-v-mesyats/)
-- **Исходный репозиторий:** [github.com/fasstupby/microapps.by](https://github.com/fasstupby/microapps.by)
+- **Исходный репозиторий:** [github.com/FastUpBy/microapps.by](https://github.com/FastUpBy/microapps.by)
 ---
 ## 📜 Лицензия
 MIT License. Разработано [FastUp.by](https://fastup.by/).
